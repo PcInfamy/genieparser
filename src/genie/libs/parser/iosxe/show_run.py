@@ -850,7 +850,7 @@ class ShowRunInterface(ShowRunInterfaceSchema):
         p112 = re.compile(r'^service-policy +type +(?P<policy_type>[\S]+) +output +(?P<output_name>[\S]+)$')
 
         # tunnel source GigabitEthernet0
-        p113 = re.compile(r'^\s*tunnel +source +(?P<tunnel_src_interface>[\S]+)$')
+        p113 = re.compile(r'^\s*tunnel +source +(?P<tunnel_src_interface>[\w\/\.\-\:]+)$')
 
         for line in output.splitlines():
             line = line.strip()

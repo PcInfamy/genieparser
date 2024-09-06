@@ -395,6 +395,7 @@ class ShowRunInterfaceSchema(MetaParser):
                 Optional('src_ip'): str,
                 Optional('tunnel_mode'): str,
                 Optional('tunnel_dst'):str,
+                Optional('tunnel_src_interface'):str,
                 Optional('autoroute_announce'):str,
                 Optional('autoroute_destination'):str,
                 Optional('tunnel_priority'):list,

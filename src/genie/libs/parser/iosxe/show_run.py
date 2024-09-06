@@ -849,6 +849,9 @@ class ShowRunInterface(ShowRunInterfaceSchema):
         # service-policy type queueing output 2p6q
         p112 = re.compile(r'^service-policy +type +(?P<policy_type>[\S]+) +output +(?P<output_name>[\S]+)$')
 
+        # tunnel source GigabitEthernet0
+        p113 = re.compile(r'^\s*tunnel +source +(?P<tunnel_src_interface>[\S]+)$')
+
         for line in output.splitlines():
             line = line.strip()
 
@@ -1734,6 +1737,13 @@ class ShowRunInterface(ShowRunInterfaceSchema):
                     'policy_type': group['policy_type'],
                     'output_name': group['output_name']
                 })
+                continue
+
+            # tunnel source GigabitEthernet0
+            m = p113.match(line)
+            if m:
+                group = m.groupdict()
+                intf_dict.update({'tunnel_src_interface':group['tunnel_src_interface']})
                 continue
 
         return config_dict
